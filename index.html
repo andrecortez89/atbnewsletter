@@ -1,28 +1,81 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scientific Newsletter</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Scientific Newsletter with Supabase</title>
+    
+    <!-- Import Supabase Library Before the Script -->
     <script src="https://unpkg.com/@supabase/supabase-js"></script>
-    <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>Últimos Artigos Científicos</h1>
-    <table id="data-table">
+    <h1>Scientific Newsletter Articles</h1>
+    
+    <table border="1">
         <thead>
             <tr>
-                <th>Título</th>
-                <th>Jornal</th>
-                <th>Fator de Impacto</th>
-                <th>Resumo</th>
+                <th>Title</th>
+                <th>Journal</th>
+                <th>Impact Factor</th>
+                <th>Summary</th>
                 <th>Link</th>
-                <th>Categoria</th>
-                <th>Data de Publicação</th>
+                <th>Category</th>
+                <th>Publication Date</th>
             </tr>
         </thead>
-        <tbody></tbody>
+        <tbody id="data-table"></tbody>
     </table>
+
+    <!-- JavaScript directly in the HTML to avoid scope issues -->
+    <script>
+        // Initialize Supabase Client (Do NOT move this below the function call)
+        const supabaseUrl = 'https://edxataxseyjasyfqonqm.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVkeGF0YXhzZXlqYXN5ZnFvbnFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzY4NjQxNzEsImV4cCI6MjA1MjQ0MDE3MX0.ONElcNyD3qvJmKF4aSS5B5VDaWd8SqTnRKkUEvQ8EJc';
+        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+        // Confirm the Supabase client loaded properly
+        console.log('Supabase Initialized:', supabase);
+
+        // Fetch Data Function
+        async function fetchData() {
+            console.log("Attempting to fetch data from Supabase...");
+
+            try {
+                const { data, error } = await supabase
+                    .from('newsletter')
+                    .select('*');
+
+                if (error) {
+                    console.error('Error Fetching Data:', error);
+                    return;
+                }
+
+                console.log('Data Fetched Successfully:', data);
+
+                // Display data in the table
+                const tableBody = document.getElementById("data-table");
+                tableBody.innerHTML = "";  // Clear existing content before reloading
+
+                data.forEach(row => {
+                    const newRow = `
+                        <tr>
+                            <td>${row.title}</td>
+                            <td>${row.journal}</td>
+                            <td>${row.impact_factor}</td>
+                            <td>${row.summary}</td>
+                            <td><a href="${row.link}" target="_blank">View Article</a></td>
+                            <td>${row.category}</td>
+                            <td>${row.publication_date}</td>
+                        </tr>`;
+                    tableBody.innerHTML += newRow;
+                });
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+
+        // Call fetchData after the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', fetchData);
+    </script>
 </body>
 </html>
