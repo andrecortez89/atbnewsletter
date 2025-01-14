@@ -35,3 +35,5 @@ async function fetchData() {
 }
 
 fetchData();
+console.log('Supabase URL:', supabaseUrl);
+console.log('Supabase Key:', supabaseKey);
