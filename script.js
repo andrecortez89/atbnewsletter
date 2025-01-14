@@ -1,5 +1,5 @@
 // Initialize Supabase Client
-const supabaseUrl = 'https://YOUR-SUPABASE-URL.supabase.co';
+const supabaseUrl = 'https://edxataxseyjasyfqonqm.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVkeGF0YXhzZXlqYXN5ZnFvbnFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzY4NjQxNzEsImV4cCI6MjA1MjQ0MDE3MX0.ONElcNyD3qvJmKF4aSS5B5VDaWd8SqTnRKkUEvQ8EJc';
 const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
