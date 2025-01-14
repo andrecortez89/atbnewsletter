@@ -34,6 +34,6 @@ async function fetchData() {
     }
 }
 
-fetchData();
+window.addEventListener('load', fetchData);
 console.log('Supabase URL:', supabaseUrl);
 console.log('Supabase Key:', supabaseKey);
