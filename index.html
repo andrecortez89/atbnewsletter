@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter Científica</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f4f4f4; }
+    </style>
+</head>
+<body>
+    <h1>Últimas Publicações Científicas</h1>
+    <table id="sheetData">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Jornal</th>
+                <th>Fator de Impacto</th>
+                <th>Resumo</th>
+                <th>Link</th>
+                <th>Categoria</th>
+                <th>Data de Publicação</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        const sheetID = 'SUA_PLANILHA_ID';  // Substitua pelo ID real
+        const apiKey = 'SUA_API_KEY';  // Substitua pela chave de API gerada
+        const sheetName = 'Sheet1';  // Nome da aba da planilha
+        const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetID}/values/${sheetName}?key=${apiKey}`;
+
+        async function fetchData() {
+            try {
+                const response = await axios.get(url);
+                const rows = response.data.values.slice(1); // Ignorar cabeçalho
+
+                const tableBody = document.querySelector("#sheetData tbody");
+                rows.forEach(row => {
+                    const [titulo, jornal, fatorImpacto, resumo, link, categoria, dataPublicacao] = row;
+                    const newRow = `
+                        <tr>
+                            <td>${titulo}</td>
+                            <td>${jornal}</td>
+                            <td>${fatorImpacto}</td>
+                            <td>${resumo}</td>
+                            <td><a href="${link}" target="_blank">Acesse o artigo</a></td>
+                            <td>${categoria}</td>
+                            <td>${dataPublicacao}</td>
+                        </tr>
+                    `;
+                    tableBody.innerHTML += newRow;
+                });
+            } catch (error) {
+                console.error("Erro ao carregar os dados:", error);
+            }
+        }
+
+        fetchData();
+    </script>
+</body>
+</html>
