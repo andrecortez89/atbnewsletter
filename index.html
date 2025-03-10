@@ -1,81 +1,451 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scientific Newsletter with Supabase</title>
-    
-    <!-- Import Supabase Library Before the Script -->
-    <script src="https://unpkg.com/@supabase/supabase-js"></script>
+    <title>Classes de Antibióticos</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            margin: 0;
+            padding: 10px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .accordion {
+            margin-bottom: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        .accordion-header {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+        
+        .accordion-content {
+            background-color: #f9f9f9;
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .accordion-content.active {
+            max-height: 1000px;
+            padding: 15px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            grid-gap: 10px;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .info-value {
+            color: #333;
+        }
+        
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+        
+        .active .chevron {
+            transform: rotate(180deg);
+        }
+    </style>
 </head>
 <body>
-    <h1>Scientific Newsletter Articles</h1>
+    <h1>Classes de Antibióticos</h1>
     
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Journal</th>
-                <th>Impact Factor</th>
-                <th>Summary</th>
-                <th>Link</th>
-                <th>Category</th>
-                <th>Publication Date</th>
-            </tr>
-        </thead>
-        <tbody id="data-table"></tbody>
-    </table>
-
-    <!-- JavaScript directly in the HTML to avoid scope issues -->
-    <script>
-        // Initialize Supabase Client (Do NOT move this below the function call)
-        const supabaseUrl = 'https://edxataxseyjasyfqonqm.supabase.co';
-        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVkeGF0YXhzZXlqYXN5ZnFvbnFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzY4NjQxNzEsImV4cCI6MjA1MjQ0MDE3MX0.ONElcNyD3qvJmKF4aSS5B5VDaWd8SqTnRKkUEvQ8EJc';
-        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
-
-        // Confirm the Supabase client loaded properly
-        console.log('Supabase Initialized:', supabase);
-
-        // Fetch Data Function
-        async function fetchData() {
-            console.log("Attempting to fetch data from Supabase...");
-
-            try {
-                const { data, error } = await supabase
-                    .from('newsletter')
-                    .select('*');
-
-                if (error) {
-                    console.error('Error Fetching Data:', error);
-                    return;
-                }
-
-                console.log('Data Fetched Successfully:', data);
-
-                // Display data in the table
-                const tableBody = document.getElementById("data-table");
-                tableBody.innerHTML = "";  // Clear existing content before reloading
-
-                data.forEach(row => {
-                    const newRow = `
-                        <tr>
-                            <td>${row.title}</td>
-                            <td>${row.journal}</td>
-                            <td>${row.impact_factor}</td>
-                            <td>${row.summary}</td>
-                            <td><a href="${row.link}" target="_blank">View Article</a></td>
-                            <td>${row.category}</td>
-                            <td>${row.publication_date}</td>
-                        </tr>`;
-                    tableBody.innerHTML += newRow;
-                });
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
-        }
-
-        // Call fetchData after the DOM is fully loaded
-        document.addEventListener('DOMContentLoaded', fetchData);
-    </script>
-</body>
-</html>
+    <div id="accordion-container">
+        <!-- Glicopeptídeos -->
+        <div class="accordion">
+            <div class="accordion-header">
+                Glicopeptídeos
+                <span class="chevron">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="info-grid">
+                    <div class="info-label">Mecanismo de Ação:</div>
+                    <div class="info-value">Inibição da síntese da parede celular (ligação D-alanina-D-alanina)</div>
+                    
+                    <div class="info-label">Exemplos:</div>
+                    <div class="info-value">Vancomicina, Teicoplanina</div>
+                    
+                    <div class="info-label">Uso Clínico:</div>
+                    <div class="info-value">MRSA, VRE, colite por C. difficile, infecções graves por Gram-positivos</div>
+                    
+                    <div class="info-label">Toxicidade:</div>
+                    <div class="info-value">Nefrotoxicidade, ototoxicidade, síndrome do homem vermelho, neutropenia</div>
+                    
+                    <div class="info-label">Farmacodinâmica:</div>
+                    <div class="info-value">Bactericida tempo-dependente (AUC/MIC)</div>
+                    
+                    <div class="info-label">Foco Tecidual / Solubilidade:</div>
+                    <div class="info-value">Boa distribuição em tecidos, limitada no SNC; hidrossolúvel</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Aminoglicosídeos -->
+        <div class="accordion">
+            <div class="accordion-header">
+                Aminoglicosídeos
+                <span class="chevron">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="info-grid">
+                    <div class="info-label">Mecanismo de Ação:</div>
+                    <div class="info-value">Inibição da síntese proteica (subunidade 30S)</div>
+                    
+                    <div class="info-label">Exemplos:</div>
+                    <div class="info-value">Gentamicina, Amicacina, Tobramicina</div>
+                    
+                    <div class="info-label">Uso Clínico:</div>
+                    <div class="info-value">Infecções graves por Gram-negativos, combinação com betalactâmicos para endocardite</div>
+                    
+                    <div class="info-label">Toxicidade:</div>
+                    <div class="info-value">Nefrotoxicidade, ototoxicidade, bloqueio neuromuscular (raro)</div>
+                    
+                    <div class="info-label">Farmacodinâmica:</div>
+                    <div class="info-value">Bactericida concentração-dependente</div>
+                    
+                    <div class="info-label">Foco Tecidual / Solubilidade:</div>
+                    <div class="info-value">Alta concentração em trato urinário e renal; hidrossolúvel</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Polimixinas -->
+        <div class="accordion">
+            <div class="accordion-header">
+                Polimixinas
+                <span class="chevron">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="info-grid">
+                    <div class="info-label">Mecanismo de Ação:</div>
+                    <div class="info-value">Desestabilização da membrana celular bacteriana</div>
+                    
+                    <div class="info-label">Exemplos:</div>
+                    <div class="info-value">Polimixina B, Colistina</div>
+                    
+                    <div class="info-label">Uso Clínico:</div>
+                    <div class="info-value">Infecções por bactérias multirresistentes (Pseudomonas, Acinetobacter)</div>
+                    
+                    <div class="info-label">Toxicidade:</div>
+                    <div class="info-value">Nefrotoxicidade, neurotoxicidade</div>
+                    
+                    <div class="info-label">Farmacodinâmica:</div>
+                    <div class="info-value">Bactericida concentração-dependente</div>
+                    
+                    <div class="info-label">Foco Tecidual / Solubilidade:</div>
+                    <div class="info-value">Concentração limitada em tecidos; hidrossolúvel</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Lipopeptídeos -->
+        <div class="accordion">
+            <div class="accordion-header">
+                Lipopeptídeos
+                <span class="chevron">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="info-grid">
+                    <div class="info-label">Mecanismo de Ação:</div>
+                    <div class="info-value">Despolarização da membrana celular</div>
+                    
+                    <div class="info-label">Exemplos:</div>
+                    <div class="info-value">Daptomicina</div>
+                    
+                    <div class="info-label">Uso Clínico:</div>
+                    <div class="info-value">Infecções graves por Gram-positivos resistentes (MRSA, VRE)</div>
+                    
+                    <div class="info-label">Toxicidade:</div>
+                    <div class="info-value">Rabdomiólise, mialgia</div>
+                    
+                    <div class="info-label">Farmacodinâmica:</div>
+                    <div class="info-value">Bactericida concentração-dependente</div>
+                    
+                    <div class="info-label">Foco Tecidual / Solubilidade:</div>
+                    <div class="info-value">Baixa penetração pulmonar; hidrossolúvel</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Macrolídeos -->
+        <div class="accordion">
+            <div class="accordion-header">
+                Macrolídeos
+                <span class="chevron">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="info-grid">
+                    <div class="info-label">Mecanismo de Ação:</div>
+                    <div class="info-value">Inibição da síntese proteica (subunidade 50S)</div>
+                    
+                    <div class="info-label">Exemplos:</div>
+                    <div class="info-value">Azitromicina, Claritromicina, Eritromicina</div>
+                    
+                    <div class="info-label">Uso Clínico:</div>
+                    <div class="info-value">Infecções respiratórias, pele e tecidos moles</div>
+                    
+                    <div class="info-label">Toxicidade:</div>
+                    <div class="info-value">Distúrbios gastrointestinais, hepatotoxicidade</div>
+                    
+                    <div class="info-label">Farmacodinâmica:</div>
+                    <div class="info-value">Bacteriostático</div>
+                    
+                    <div class="info-label">Foco Tecidual / Solubilidade:</div>
+                    <div class="info-value">Excelente penetração em tecidos moles e pulmões; lipossolúvel</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Oxazolidinonas -->
+        <div class="accordion">
+            <div class="accordion-header">
+                Oxazolidinonas
+                <span class="chevron">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="info-grid">
+                    <div class="info-label">Mecanismo de Ação:</div>
+                    <div class="info-value">Inibição da síntese proteica (subunidade 50S)</div>
+                    
+                    <div class="info-label">Exemplos:</div>
+                    <div class="info-value">Linezolida, Tedizolida</div>
+                    
+                    <div class="info-label">Uso Clínico:</div>
+                    <div class="info-value">Infecções por Gram-positivos resistentes (MRSA, VRE)</div>
+                    
+                    <div class="info-label">Toxicidade:</div>
+                    <div class="info-value">Mielossupressão, neuropatia periférica</div>
+                    
+                    <div class="info-label">Farmacodinâmica:</div>
+                    <div class="info-value">Bacteriostático</div>
+                    
+                    <div class="info-label">Foco Tecidual / Solubilidade:</div>
+                    <div class="info-value">Boa penetração em tecidos, incluindo pulmões e SNC; lipossolúvel</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Nitroimidazóis -->
+        <div class="accordion">
+            <div class="accordion-header">
+                Nitroimidazóis
+                <span class="chevron">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="info-grid">
+                    <div class="info-label">Mecanismo de Ação:</div>
+                    <div class="info-value">Destruição do DNA bacteriano</div>
+                    
+                    <div class="info-label">Exemplos:</div>
+                    <div class="info-value">Metronidazol</div>
+                    
+                    <div class="info-label">Uso Clínico:</div>
+                    <div class="info-value">Infecções por anaeróbios, giardíase, amebíase, colite por C. difficile</div>
+                    
+                    <div class="info-label">Toxicidade:</div>
+                    <div class="info-value">Distúrbios gastrointestinais, neuropatia periférica, gosto metálico</div>
+                    
+                    <div class="info-label">Farmacodinâmica:</div>
+                    <div class="info-value">Bactericida concentração-dependente</div>
+                    
+                    <div class="info-label">Foco Tecidual / Solubilidade:</div>
+                    <div class="info-value">Alta concentração em trato gastrointestinal e abscessos anaeróbicos; lipossolúvel</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quinolonas -->
+        <div class="accordion">
+            <div class="accordion-header">
+                Quinolonas
+                <span class="chevron">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="info-grid">
+                    <div class="info-label">Mecanismo de Ação:</div>
+                    <div class="info-value">Inibição da síntese de DNA (DNA girase/topoisomerase IV)</div>
+                    
+                    <div class="info-label">Exemplos:</div>
+                    <div class="info-value">Ciprofloxacino, Levofloxacino, Moxifloxacino</div>
+                    
+                    <div class="info-label">Uso Clínico:</div>
+                    <div class="info-value">Infecções urinárias, gastrointestinais, respiratórias, ósseas</div>
+                    
+                    <div class="info-label">Toxicidade:</div>
+                    <div class="info-value">Tendinite, ruptura de tendões, prolongamento do QT, neurotoxicidade (raro)</div>
+                    
+                    <div class="info-label">Farmacodinâmica:</div>
+                    <div class="info-value">Bactericida concentração-dependente</div>
+                    
+                    <div class="info-label">Foco Tecidual / Solubilidade:</div>
+                    <div class="info-value">Boa distribuição em tecidos, incluindo próstata e pulmões; lipossolúvel</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Rifamicinas -->
+        <div class="accordion">
+            <div class="accordion-header">
+                Rifamicinas
+                <span class="chevron">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="info-grid">
+                    <div class="info-label">Mecanismo de Ação:</div>
+                    <div class="info-value">Inibição da RNA polimerase bacteriana</div>
+                    
+                    <div class="info-label">Exemplos:</div>
+                    <div class="info-value">Rifampicina</div>
+                    
+                    <div class="info-label">Uso Clínico:</div>
+                    <div class="info-value">Tuberculose, profilaxia meningocócica</div>
+                    
+                    <div class="info-label">Toxicidade:</div>
+                    <div class="info-value">Hepatotoxicidade, coloração laranja das secreções corporais</div>
+                    
+                    <div class="info-label">Farmacodinâmica:</div>
+                    <div class="info-value">Bactericida</div>
+                    
+                    <div class="info-label">Foco Tecidual / Solubilidade:</div>
+                    <div class="info-value">Boa penetração em tecidos, incluindo SNC; lipossolúvel</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sulfonamidas e Trimetoprima -->
+        <div class="accordion">
+            <div class="accordion-header">
+                Sulfonamidas e Trimetoprima
+                <span class="chevron">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="info-grid">
+                    <div class="info-label">Mecanismo de Ação:</div>
+                    <div class="info-value">Inibição sequencial da síntese do ácido fólico</div>
+                    
+                    <div class="info-label">Exemplos:</div>
+                    <div class="info-value">Sulfametoxazol-Trimetoprima</div>
+                    
+                    <div class="info-label">Uso Clínico:</div>
+                    <div class="info-value">ITU, pneumocistose, toxoplasmose</div>
+                    
+                    <div class="info-label">Toxicidade:</div>
+                    <div class="info-value">Reações alérgicas, nefrotoxicidade, hematológicas</div>
+                    
+                    <div class="info-label">Farmacodinâmica:</div>
+                    <div class="info-value">Bactericida (combinação)</div>
+                    
+                    <div class="info-label">Foco Tecidual / Solubilidade:</div>
+                    <div class="info-value">Boa distribuição em tecidos; lipossolúvel</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Lincosamidas -->
+        <div class="accordion">
+            <div class="accordion-header">
+                Lincosamidas
+                <span class="chevron">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="info-grid">
+                    <div class="info-label">Mecanismo de Ação:</div>
+                    <div class="info-value">Inibição da síntese proteica (subunidade 50S)</div>
+                    
+                    <div class="info-label">Exemplos:</div>
+                    <div class="info-value">Clindamicina</div>
+                    
+                    <div class="info-label">Uso Clínico:</div>
+                    <div class="info-value">Infecções por anaeróbios, pele e partes moles</div>
+                    
+                    <div class="info-label">Toxicidade:</div>
+                    <div class="info-value">Distúrbios gastrointestinais, colite pseudomembranosa</div>
+                    
+                    <div class="info-label">Farmacodinâmica:</div>
+                    <div class="info-value">Bacteriostático</div>
+                    
+                    <div class="info-label">Foco Tecidual / Solubilidade:</div>
+                    <div class="info-value">Boa penetração em tecidos, incluindo ossos; lipossolúvel</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tetraciclinas -->
+        <div class="accordion">
+            <div class="accordion-header">
+                Tetraciclinas
+                <span class="chevron">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="info-grid">
+                    <div class="info-label">Mecanismo de Ação:</div>
+                    <div class="info-value">Inibição da síntese proteica (subunidade 30S)</div>
+                    
+                    <div class="info-label">Exemplos:</div>
+                    <div class="info-value">Doxiciclina, Minociclina</div>
+                    
+                    <div class="info-label">Uso Clínico:</div>
+                    <div class="info-value">Infecções respiratórias, pele, zoonoses</div>
+                    
+                    <div class="info-label">Toxicidade:</div>
+                    <div class="info-value">Fotossensibilidade, hepatotoxicidade, descoloração dentária</div>
+                    
+                    <div class="info-label">Farmacodinâmica:</div>
+                    <div class="info-value">Bacteriostático</div>
+                    
+                    <div class="info-label">Foco Tecidual / Solubilidade:</div>
+                    <div class="info-value">Boa penetração tecidual, exceto SNC; lipossolúvel</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Glicilciclinas -->
+        <div class="accordion">
+            <div class="accordion-header">
+                Glicilciclinas
+                <span class="chevron">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="info-grid">
+                    <div class="info-label">Mecanismo de Ação:</div>
+                    <div class="info-value">Inibição da síntese proteica (subunidade 30S)</div>
+                    
+                    <div class="info-label">Exemplos:</div>
+                    <div class="info-value">Tigeciclina</div>
+                    
+                    <div class="info-label">Uso Clínico:</div>
+                    <div class="info-value">Infecções complicadas de pele, intra-abdominais</div>
+                    
+                    <div class="info-label">Toxicidade:</div>
+                    <div class="info-value">Náuseas, vômitos, hepatotoxicidade</div>
+             
